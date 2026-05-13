@@ -11,13 +11,13 @@ describe('Vault Contract TypeScript Integration', () => {
       // We run the cargo test command to verify the core logic works
       const result = execSync('cargo test', { cwd: './contracts/vault-contract', stdio: 'pipe' });
       expect(result.toString()).toContain('test result: ok');
-    } catch (e: any) {
+    } catch (e: unknown) {
       // If tests fail, fail the Jest test
-      if (e.stdout) {
-        console.error(e.stdout.toString());
+      if (e && typeof e === 'object' && 'stdout' in e && (e as any).stdout) {
+        console.error(String((e as any).stdout));
       }
-      if (e.stderr) {
-        console.error(e.stderr.toString());
+      if (e && typeof e === 'object' && 'stderr' in e && (e as any).stderr) {
+        console.error(String((e as any).stderr));
       }
       throw e;
     }

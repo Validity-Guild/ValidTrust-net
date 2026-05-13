@@ -22,6 +22,6 @@ try {
   const result = execSync(invokeCmd, { encoding: 'utf-8' });
   console.log(`✅ Successfully initialized Vault Contract.`);
   console.log(result);
-} catch (error) {
-  console.error('Initialization failed:', error);
+} catch (error: unknown) {
+  console.error('Initialization failed:', error instanceof Error ? error.message : error);
 }

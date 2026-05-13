@@ -12,8 +12,8 @@ const wasmPath = path.join(contractDir, 'target/wasm32-unknown-unknown/release/v
 console.log('Compiling the Vault contract...');
 try {
   execSync('cargo build --target wasm32-unknown-unknown --release', { cwd: contractDir, stdio: 'inherit' });
-} catch (error) {
-  console.error('Failed to compile contract:', error);
+} catch (error: unknown) {
+  console.error('Failed to compile contract:', error instanceof Error ? error.message : error);
   process.exit(1);
 }
 
@@ -29,6 +29,9 @@ try {
   console.log(`Contract ID: ${contractId}`);
   
   // TODO: Save contract ID to a config file for frontend/backend to consume
-} catch (error) {
-  console.error('Deployment failed. Ensure soroban-cli is installed and configured:', error);
+} catch (error: unknown) {
+  console.error(
+    'Deployment failed. Ensure soroban-cli is installed and configured:',
+    error instanceof Error ? error.message : error
+  );
 }
