@@ -1,5 +1,7 @@
 <div align="center">
 
+![ValidTrust Network Logo](logo/Valid%20net%20logo.png)
+
 # ValidTrust Network
 
 **An open-source, modular vault and reward distribution protocol built on Stellar Soroban.**
