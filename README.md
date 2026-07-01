@@ -164,6 +164,22 @@ validtrust-network/
 
 ---
 
+## Funding and Drips
+
+This repository is part of the ValidTrust ecosystem, which is eligible for funding through [Drips](https://drips.network).
+
+### Repository Claiming
+Maintainers should claim this repository on Drips to receive funding. The claiming process may require adding a `FUNDING.json` file with ownership information to the repository root. **Important**: Do not create `FUNDING.json` with placeholder wallet addresses - only add real, maintainer-approved addresses.
+
+### Upstream Dependencies
+Key dependencies that may be relevant for Drips funding:
+- `soroban-sdk` (Rust) - Stellar Soroban smart contract SDK
+- `@stellar/stellar-sdk` (TypeScript) - Stellar blockchain SDK
+
+For more details on Drips readiness, see [docs/drips-readiness.md](docs/drips-readiness.md).
+
+---
+
 ## Contributing
 
 We actively welcome contributions from developers of all experience levels. Whether you're a Soroban beginner or an experienced Rust developer, there is a meaningful task for you.
