@@ -1,77 +1,184 @@
-# Validity Network
+<div align="center">
 
-Validity Network is an open-source, smart-contract based vault and reward distribution protocol built on the Stellar network using Soroban. It is designed to be highly modular, making it a perfect repository for open-source contributors to learn, build, and optimize smart contracts.
+# ValidTrust Network
+
+**An open-source, modular vault and reward distribution protocol built on Stellar Soroban.**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Rust](https://img.shields.io/badge/Rust-Soroban-orange?logo=rust)](https://www.rust-lang.org/)
+[![Stellar](https://img.shields.io/badge/Stellar-Soroban-7C3AED?logo=stellar)](https://soroban.stellar.org/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
+</div>
+
+---
 
 ## Overview
 
-The Vault contract (`ValidityVault`) allows users to:
-- **Deposit** Stellar assets (tokens).
-- **Track balances** securely on-chain.
-- **Withdraw** funds.
-- **Receive proportional rewards** from a distribution pool.
+ValidTrust Network is the core smart contract protocol powering the ValidTrust ecosystem. It implements a non-custodial vault and reward distribution system on the [Stellar](https://stellar.org/) blockchain, leveraging [Soroban](https://soroban.stellar.org/) smart contracts written in **Rust**.
 
-This repository serves as both a production-ready template and a learning hub for Soroban developers. Maintainers regularly post GitHub issues covering optimizations, security, and feature extensions.
+The protocol is designed with modularity and open-source contribution in mind. Maintainers regularly post GitHub Issues covering gas optimisations, security improvements, and feature extensions — making this an ideal repository for Soroban developers to learn, contribute, and build.
+
+---
+
+## Table of Contents
+
+- [How It Works](#how-it-works)
+- [Architecture](#architecture)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Building & Testing](#building--testing)
+- [Deployment](#deployment)
+- [Project Structure](#project-structure)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
+
+## How It Works
+
+The `ValidTrustVault` contract is the centrepiece of the protocol. It allows users to:
+
+| Action | Description |
+|---|---|
+| **Deposit** | Lock Stellar assets (tokens) into the vault |
+| **Track Balances** | Balances are recorded securely on-chain using Soroban's persistent storage |
+| **Withdraw** | Retrieve deposited funds at any time without a lock-up period |
+| **Claim Rewards** | Receive proportional rewards from a shared distribution pool based on vault share |
+
+All actions emit structured on-chain events that can be consumed by off-chain indexers and the [ValidTrust Dashboard](https://github.com/validtrust-network/validtrust-dashboard).
+
+---
 
 ## Architecture
 
-The smart contract is written in Rust and structured into specific modules:
-- `src/lib.rs`: The main contract interface containing deposit/withdraw logic.
-- `src/storage.rs`: Handles the `Persistent` and `Instance` storage interactions.
-- `src/events.rs`: Defines structured events for indexers to consume.
-- `src/errors.rs`: Defines custom contract errors.
+The contract is written in **Rust** and compiled to **WebAssembly** for deployment on Soroban. It is structured into focused modules:
 
-For more details, see [Architecture](docs/architecture.md) and the [Contract Specification](docs/contract-spec.md).
+| Module | Description |
+|---|---|
+| `src/lib.rs` | Main contract interface — deposit, withdraw, and reward claim entrypoints |
+| `src/storage.rs` | Manages `Persistent` and `Instance` storage for balances and state |
+| `src/events.rs` | Defines typed events for on-chain indexing |
+| `src/errors.rs` | Custom contract error types for predictable failure handling |
 
-## Setup Instructions
+For a deeper dive, see the [Architecture Overview](docs/architecture.md) and the [Contract Specification](docs/contract-spec.md).
+
+---
+
+## Getting Started
 
 ### Prerequisites
-- [Rust](https://www.rust-lang.org/tools/install) (with `wasm32-unknown-unknown` target installed)
-- [Soroban CLI](https://soroban.stellar.org/docs/getting-started/setup)
-- Node.js (for running deployment scripts)
+
+| Tool | Purpose | Install |
+|---|---|---|
+| [Rust](https://www.rust-lang.org/tools/install) + `wasm32` target | Compile the smart contract | `rustup target add wasm32-unknown-unknown` |
+| [Soroban CLI](https://soroban.stellar.org/docs/getting-started/setup) | Deploy and invoke contracts locally | See Soroban docs |
+| [Node.js](https://nodejs.org/) v18+ | Run deployment and test scripts | nodejs.org |
 
 ### Installation
-Clone the repository and install Node dependencies:
+
+Clone the repository and install Node.js dependencies:
+
 ```bash
-git clone https://github.com/validity-network/validity-network.git
-cd validity-network
+git clone https://github.com/validtrust-network/validtrust-network.git
+cd validtrust-network
 npm install
 ```
 
-## Building and Testing
+Configure your environment by creating a `.env` file based on `.env.example`:
+
+```env
+SOROBAN_RPC_URL=https://soroban-testnet.stellar.org
+NETWORK_PASSPHRASE=Test SDF Network ; September 2015
+SOURCE_ACCOUNT_SECRET=YOUR_SECRET_KEY_HERE
+```
+
+---
+
+## Building & Testing
 
 ### Build the Contract
-Compile the Rust smart contract into WebAssembly:
+
+Compile the Rust smart contract to WebAssembly:
+
 ```bash
 npm run build:contract
 ```
 
-### Run Unit Tests
-Run the Soroban Rust test suite to verify the logic:
+The compiled `.wasm` binary will be output to `contracts/vault-contract/target/wasm32-unknown-unknown/release/`.
+
+### Run Rust Unit Tests
+
+Execute the Soroban native test suite:
+
 ```bash
 npm run test:contract
 ```
 
 ### Run TypeScript Integration Tests
-Run the Jest tests covering deployment and execution:
+
+Execute the Jest tests covering deployment and contract interactions:
+
 ```bash
 npm run test:ts
 ```
 
+---
+
 ## Deployment
 
-To deploy the contract to a local sandbox or the Stellar Testnet, use the provided TypeScript script. Ensure you have your `.env` file configured.
+Deploy the compiled contract to the Stellar Testnet (or a local sandbox):
 
 ```bash
+# Deploy the contract and obtain a Contract ID
 npm run deploy
+
+# Initialise contract state with default parameters
 npm run init
 ```
 
+Ensure your `.env` file is configured with a funded Testnet account before deploying. You can fund a Testnet account using [Stellar Laboratory](https://laboratory.stellar.org/#account-creator?network=test).
+
+---
+
+## Project Structure
+
+```
+validtrust-network/
+├── contracts/
+│   └── vault-contract/         # Rust/Soroban smart contract source
+│       ├── src/
+│       │   ├── lib.rs           # Contract entrypoints
+│       │   ├── storage.rs       # On-chain state management
+│       │   ├── events.rs        # Structured event definitions
+│       │   └── errors.rs        # Custom error types
+│       └── Cargo.toml
+├── scripts/
+│   ├── deploy.ts               # Contract deployment script
+│   └── initialize.ts           # Contract initialization script
+├── tests/                      # TypeScript integration tests
+├── docs/                       # Architecture and specification docs
+└── README.md
+```
+
+---
+
 ## Contributing
 
-We are actively seeking contributors! Whether you are optimizing gas usage, improving reward distribution logic, or adding new tests, your help is welcome.
+We actively welcome contributions from developers of all experience levels. Whether you're a Soroban beginner or an experienced Rust developer, there is a meaningful task for you.
 
-Please read our [Contributing Guide](docs/contributing-guide.md) to understand our workflow and review the open TODOs in the codebase.
+Please read our [Contributing Guide](docs/contributing-guide.md) to understand our workflow before opening a Pull Request.
+
+**Priority contribution areas:**
+- Gas and storage optimisations in `src/lib.rs`
+- Improved reward distribution algorithms
+- Additional contract modules (Governance, Staking)
+- Expanded test coverage in `src/test.rs`
+- Security reviews and audit preparation
+
+---
 
 ## License
 
-MIT License
+This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
