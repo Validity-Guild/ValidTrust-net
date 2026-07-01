@@ -1,6 +1,6 @@
 # Contract Specification
 
-## `ValidityVault`
+## `ValidTrustVault`
 
 The Vault is a smart contract designed to hold tokens on behalf of users and distribute proportional rewards.
 

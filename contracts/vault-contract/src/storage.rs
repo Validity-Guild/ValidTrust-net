@@ -1,6 +1,6 @@
 //! # Vault Storage Module
 //!
-//! This module manages the persistent and instance storage for the Validity Vault contract.
+//! This module manages the persistent and instance storage for the ValidTrust Vault contract.
 //! It defines the keys used for storage and provides helper functions to read and write
 //! contract state safely.
 //!

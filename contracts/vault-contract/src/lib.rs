@@ -1,4 +1,4 @@
-//! # Validity Network Vault Contract
+//! # ValidTrust Network Vault Contract
 //!
 //! This contract implements a secure vault system on the Soroban blockchain.
 //! It allows users to deposit supported tokens, accumulate rewards based on their
@@ -24,12 +24,12 @@ mod test;
 use soroban_sdk::{contract, contractimpl, Address, Env, token, log};
 use errors::VaultError;
 
-/// The main contract structure for the Validity Vault.
+/// The main contract structure for the ValidTrust Vault.
 #[contract]
-pub struct ValidityVault;
+pub struct ValidTrustVault;
 
 #[contractimpl]
-impl ValidityVault {
+impl ValidTrustVault {
     /// # Initialize the Vault
     ///
     /// Sets up the initial state of the contract, including the administrator address
@@ -43,7 +43,7 @@ impl ValidityVault {
     /// ### Returns
     /// * `Result<(), VaultError>` - Success or an error if already initialized.
     pub fn initialize(env: Env, admin: Address, token: Address) -> Result<(), VaultError> {
-        log!(&env, "Initializing Validity Vault with admin: {} and token: {}", admin, token);
+        log!(&env, "Initializing ValidTrust Vault with admin: {} and token: {}", admin, token);
 
         if storage::is_initialized(&env) {
             log!(&env, "Initialization failed: Vault is already initialized");

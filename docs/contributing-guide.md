@@ -1,6 +1,6 @@
-# Contributing to Validity Network
+# Contributing to ValidTrust Network
 
-We welcome contributions to the Validity Network! This guide will help you get started with the codebase and our development workflow.
+We welcome contributions to the ValidTrust Network! This guide will help you get started with the codebase and our development workflow.
 
 ## Prerequisites
 

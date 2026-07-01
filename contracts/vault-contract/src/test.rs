@@ -11,8 +11,8 @@ fn create_token_contract<'a>(env: &Env, admin: &Address) -> token::Client<'a> {
 #[test]
 fn test_initialize() {
     let env = Env::default();
-    let contract_id = env.register_contract(None, ValidityVault);
-    let client = ValidityVaultClient::new(&env, &contract_id);
+    let contract_id = env.register_contract(None, ValidTrustVault);
+    let client = ValidTrustVaultClient::new(&env, &contract_id);
 
     let admin = Address::generate(&env);
     let token_admin = Address::generate(&env);
@@ -30,8 +30,8 @@ fn test_deposit_withdraw() {
     let env = Env::default();
     env.mock_all_auths();
 
-    let contract_id = env.register_contract(None, ValidityVault);
-    let client = ValidityVaultClient::new(&env, &contract_id);
+    let contract_id = env.register_contract(None, ValidTrustVault);
+    let client = ValidTrustVaultClient::new(&env, &contract_id);
 
     let admin = Address::generate(&env);
     let user = Address::generate(&env);
@@ -67,8 +67,8 @@ fn test_distribute_rewards() {
     let env = Env::default();
     env.mock_all_auths();
 
-    let contract_id = env.register_contract(None, ValidityVault);
-    let client = ValidityVaultClient::new(&env, &contract_id);
+    let contract_id = env.register_contract(None, ValidTrustVault);
+    let client = ValidTrustVaultClient::new(&env, &contract_id);
 
     let admin = Address::generate(&env);
     let user1 = Address::generate(&env);

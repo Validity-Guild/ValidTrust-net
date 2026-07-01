@@ -1,7 +1,7 @@
 {
-  "name": "validity-network",
+  "name": "validtrust-network",
   "version": "1.0.0",
-  "description": "Validity Network - Soroban smart contract vault and reward distribution protocol",
+  "description": "ValidTrust Network - Soroban smart contract vault and reward distribution protocol",
   "main": "index.js",
   "scripts": {
     "build:contract": "cd contracts/vault-contract && cargo build --target wasm32-unknown-unknown --release",
@@ -17,7 +17,7 @@
     "vault",
     "rust"
   ],
-  "author": "Validity Network Contributors",
+  "author": "ValidTrust Network Contributors",
   "license": "MIT",
   "dependencies": {
     "@stellar/stellar-sdk": "^12.0.0",

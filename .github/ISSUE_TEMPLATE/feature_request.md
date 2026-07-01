@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an idea for the Validity Network Vault
+about: Suggest an idea for the ValidTrust Network Vault
 title: ''
 labels: enhancement
 assignees: ''

@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Create a report to help us improve the Validity Network
+about: Create a report to help us improve the ValidTrust Network
 title: ''
 labels: bug
 assignees: ''

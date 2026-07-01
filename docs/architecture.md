@@ -1,6 +1,6 @@
-# Validity Network Architecture
+# ValidTrust Network Architecture
 
-The Validity Network smart contract is designed with a modular approach to separate concerns and make testing and contributing straightforward.
+The ValidTrust Network smart contract is designed with a modular approach to separate concerns and make testing and contributing straightforward.
 
 ## Modules
 
