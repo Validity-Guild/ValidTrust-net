@@ -1,6 +1,6 @@
 <div align="center">
 
-![ValidTrust Network Logo](logo/Valid%20net%20logo.png)
+<img src="logo/Valid%20net%20logo.png" alt="ValidTrust Network Logo" width="120" height="120" />
 
 # ValidTrust Network
 
