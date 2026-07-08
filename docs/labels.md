@@ -13,7 +13,6 @@ This document describes the labels used in this repository for issue categorizat
 
 - `good first issue` - Good for first-time contributors
 - `help wanted` - Issue needs assistance from the community
-- `drips-wave` - Issue eligible for Drips Wave contribution
 - `bounty-ready` - Issue is ready for bounty program participation
 
 ## Component Labels

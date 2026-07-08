@@ -28,25 +28,13 @@ Thank you for your interest in contributing to the ValidTrust Network! We are ex
   npm run test:ts
   ```
 
-## Drips and Drips Wave Contribution
-
-This project participates in [Drips](https://drips.network) and [Drips Wave](https://docs.drips.network/wave/).
-
-### Finding Issues to Work On
+## Finding Issues to Work On
 - Look for issues labeled with:
   - `good first issue` - Great for first-time contributors
   - `help wanted` - Issues that need assistance
-  - `drips-wave` - Issues eligible for Drips Wave
   - `bounty-ready` - Issues with potential bounties
   - `smart-contract` - Issues related to smart contracts
   - `rust` - Rust-specific issues
-
-### Drips Wave Tasks
-Issues labeled `drips-wave` are eligible for Drips Wave contribution cycles. These issues typically have:
-- Clear acceptance criteria
-- Estimated difficulty level
-- Expected files or modules to modify
-- Testing requirements
 
 ## Priority Contribution Areas
 
