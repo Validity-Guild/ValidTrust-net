@@ -83,8 +83,8 @@ For a deeper dive, see the [Architecture Overview](docs/architecture.md) and the
 Clone the repository and install Node.js dependencies:
 
 ```bash
-git clone https://github.com/validtrust-network/validtrust-network.git
-cd validtrust-network
+git clone https://github.com/Validity-Guild/ValidTrust-net.git
+cd ValidTrust-net
 npm install
 ```
 
@@ -93,7 +93,10 @@ Configure your environment by creating a `.env` file based on `.env.example`:
 ```env
 SOROBAN_RPC_URL=https://soroban-testnet.stellar.org
 NETWORK_PASSPHRASE=Test SDF Network ; September 2015
-SOURCE_ACCOUNT_SECRET=YOUR_SECRET_KEY_HERE
+SOURCE_SECRET=YOUR_SECRET_KEY_HERE
+VAULT_CONTRACT_ID=
+TOKEN_CONTRACT_ID=
+ADMIN_ADDRESS=
 ```
 
 ---
